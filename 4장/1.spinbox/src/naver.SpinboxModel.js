@@ -3,7 +3,7 @@
  * @param {number} nValue 스핀박스의 기본 값
  * @constructor
  */
-naver.SpinboxModel = function(nValue){
+naver.SpinboxModel = function (nValue) {
     this._nMax = 300;
     this._nMin = 100;
     this._nValue = nValue;
@@ -15,7 +15,7 @@ naver.SpinboxModel.prototype = {
      * 스핀박스의 값을 반환한다.
      * @returns {number}
      */
-    getValue : function(){
+    getValue: function () {
         return this._nValue;
     },
 
@@ -23,8 +23,8 @@ naver.SpinboxModel.prototype = {
      * 스핀박스의 값을 설정한다.
      * @param {(number|string)?} nValue 스핀박스에 설정할 값
      */
-    setValue : function(nValue){
-        if(nValue != undefined){
+    setValue: function (nValue) {
+        if (nValue !== undefined) {
             nValue = this._refineValue(nValue);
             nValue = this._checkOverValue(nValue);
             nValue = this._checkUnderValue(nValue);
@@ -36,15 +36,15 @@ naver.SpinboxModel.prototype = {
     /**
      * 스핀박스의 값을 1 증가시킨다.
      */
-    increase : function(){
-        this._nValue = this._checkOverValue(++this._nValue);
+    increase: function () {
+        this._nValue = this._checkOverValue(this._nValue + 1);
     },
 
     /**
      * 스핀박스의 값을 1 감소시킨다.
      */
-    decrease : function(){
-        this._nValue = this._checkUnderValue(--this._nValue);
+    decrease: function () {
+        this._nValue = this._checkUnderValue(this._nValue - 1);
     },
 
     /**
@@ -53,9 +53,9 @@ naver.SpinboxModel.prototype = {
      * @returns {number}
      * @private
      */
-    _refineValue : function(nValue){
+    _refineValue: function (nValue) {
         nValue = nValue.toString();
-        nValue = nValue.match(/(^[-+])?[0-9]+/g).join('');
+        nValue = nValue.match(/(^[\-+])?[0-9]+/g).join('');
 
         return parseInt(nValue, 10);
     },
@@ -66,11 +66,9 @@ naver.SpinboxModel.prototype = {
      * @returns {number}
      * @private
      */
-    _checkOverValue : function(nValue){
-        if(nValue > this._nMax){
+    _checkOverValue: function (nValue) {
+        if (nValue > this._nMax) {
             return this._nMax;
-        }else{
-            return nValue;
         }
     },
 
@@ -80,11 +78,9 @@ naver.SpinboxModel.prototype = {
      * @returns {number}
      * @private
      */
-    _checkUnderValue : function(nValue){
-        if(nValue < this._nMin){
+    _checkUnderValue: function (nValue) {
+        if (nValue < this._nMin) {
             return this._nMin;
-        }else{
-            return nValue;
         }
     }
 };

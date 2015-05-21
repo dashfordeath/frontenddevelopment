@@ -6,7 +6,7 @@
 naver.SpinboxView = function(oSpinboxModel){
     this._oSpinboxModel = oSpinboxModel;
 
-    console.log(oSpinboxModel);
+
     this._assignElements();
     this._bindEvents();
     this._valueRender();
@@ -37,10 +37,9 @@ naver.SpinboxView.prototype = {
 
     /**
      * 인풋박스 blur 이벤트 리스너, 값을 설정한다.
-     * @param {MouseEvent} oEvent
      * @private
      */
-    _onBlurSetValue : function(oEvent){
+    _onBlurSetValue : function(){
         var sValue = this.welSpinboxIpt.val();
 
         this._oSpinboxModel.setValue(sValue);
@@ -49,20 +48,18 @@ naver.SpinboxView.prototype = {
 
     /**
      * 증가 버튼 click 이벤트 리스너, 값을 1 증가시킨다.
-     * @param {MouseEvent} oEvent
      * @private
      */
-    _onClickIncrease : function(oEvent){
+    _onClickIncrease : function(){
         this._oSpinboxModel.increase();
         this._valueRender();
     },
 
     /**
      * 감소 버튼 click 이벤트 리스너, 값을 1 감소시킨다.
-     * @param {MouseEvent} oEvent
      * @private
      */
-    _onClickDecrease : function(oEvent){
+    _onClickDecrease : function(){
         this._oSpinboxModel.decrease();
         this._valueRender();
     },

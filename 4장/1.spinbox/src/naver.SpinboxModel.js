@@ -82,5 +82,6 @@ naver.SpinboxModel.prototype = {
         if (nValue < this._nMin) {
             return this._nMin;
         }
+        return nValue;
     }
 };
